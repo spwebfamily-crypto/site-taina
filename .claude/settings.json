@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:familiapequenoscoracoes.my.canva.site)",
+      "Bash(rm -f test)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir --no-import-alias --turbopack --use-npm)",
+      "Bash(rm -rf ./* .eslintrc* .next)",
+      "Bash(yes \"\")",
+      "Bash(npx create-next-app@latest . --ts --tailwind --eslint --app --src-dir --no-import-alias --turbopack --use-npm)"
+    ],
+    "additionalDirectories": [
+      "c:\\site-taina\\material",
+      "C:\\site-taina"
+    ]
+  }
+}
