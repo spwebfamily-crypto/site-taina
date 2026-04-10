@@ -11,7 +11,8 @@
       "Bash(mv \"capa livro.png\" \"capa-livro.png\")",
       "Bash(mv \"livro aberto \\(conteudo\\).png\" \"livro-aberto.png\")",
       "Bash(git add:*)",
-      "Bash(git commit -m \"feat: landing page Devocional Pequenos Corações:*)"
+      "Bash(git commit -m \"feat: landing page Devocional Pequenos Corações:*)",
+      "Bash(npx vercel:*)"
     ],
     "additionalDirectories": [
       "c:\\site-taina\\material",

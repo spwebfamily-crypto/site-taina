@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { FadeInUp } from "../AnimatedSection";
 import { CTAButton } from "../CTAButton";
+import { Floating, SheepSVG, DoveSVG } from "../BiblicalIllustrations";
 
 export function FinalCTASection() {
   return (
@@ -10,13 +11,20 @@ export function FinalCTASection() {
       className="relative overflow-hidden bg-gradient-to-b from-background to-pink-light/30 px-6 py-20 md:px-12 md:py-28"
       aria-labelledby="final-cta-heading"
     >
-      {/* Background decoration */}
+      {/* Background blobs */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute -left-32 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-gold/5" />
         <div className="absolute -right-32 top-1/3 h-80 w-80 rounded-full bg-coral/5" />
       </div>
 
-      <div className="relative mx-auto max-w-3xl text-center">
+      <Floating className="absolute left-[3%] bottom-[15%] opacity-30 md:left-[8%] md:opacity-40" duration={7} yRange={16}>
+        <SheepSVG className="h-28 w-36 md:h-36 md:w-48" />
+      </Floating>
+      <Floating className="absolute right-[3%] top-[10%] opacity-25 md:right-[8%] md:opacity-35" duration={8} delay={1} yRange={18}>
+        <DoveSVG className="h-28 w-36 md:h-36 md:w-48" />
+      </Floating>
+
+      <div className="relative z-10 mx-auto max-w-3xl text-center">
         <FadeInUp>
           <p className="text-xl font-bold leading-relaxed md:text-2xl">
             <span className="text-coral">Pequenos momentos hoje</span>
@@ -53,7 +61,6 @@ export function FinalCTASection() {
         </FadeInUp>
 
         <FadeInUp delay={0.45} className="mt-8 flex flex-col items-center">
-          {/* Arrow decoration */}
           <motion.svg
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}

@@ -2,11 +2,16 @@
 
 import { FadeInUp } from "../AnimatedSection";
 import { DotsDivider } from "../Decorations";
+import { Floating, DoveSVG } from "../BiblicalIllustrations";
 
 export function ProblemSection() {
   return (
-    <section className="bg-white px-6 py-16 md:px-12 md:py-24" aria-labelledby="problem-heading">
-      <div className="mx-auto max-w-3xl text-center">
+    <section className="relative overflow-hidden bg-white px-6 py-16 md:px-12 md:py-24" aria-labelledby="problem-heading">
+      <Floating className="absolute -right-6 top-1/2 -translate-y-1/2 opacity-25 md:right-[8%] md:opacity-35" duration={7} yRange={18}>
+        <DoveSVG className="h-32 w-44 md:h-40 md:w-56" />
+      </Floating>
+
+      <div className="relative z-10 mx-auto max-w-3xl text-center">
         <FadeInUp>
           <DotsDivider />
         </FadeInUp>

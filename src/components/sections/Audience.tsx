@@ -1,6 +1,7 @@
 "use client";
 
 import { StaggerContainer, StaggerItem, FadeInUp } from "../AnimatedSection";
+import { Floating, SheepSVG } from "../BiblicalIllustrations";
 
 const audiences = [
   { emoji: "❤️", label: "Pais e mães" },
@@ -12,10 +13,14 @@ const audiences = [
 export function AudienceSection() {
   return (
     <section
-      className="bg-background px-6 py-16 md:px-12 md:py-24"
+      className="relative overflow-hidden bg-background px-6 py-16 md:px-12 md:py-24"
       aria-labelledby="audience-heading"
     >
-      <div className="mx-auto max-w-4xl">
+      <Floating className="absolute -left-4 bottom-8 opacity-30 md:left-[6%] md:opacity-40" duration={6} yRange={14}>
+        <SheepSVG className="h-28 w-36 md:h-36 md:w-48" />
+      </Floating>
+
+      <div className="relative z-10 mx-auto max-w-4xl">
         <FadeInUp className="text-center">
           <h2
             id="audience-heading"

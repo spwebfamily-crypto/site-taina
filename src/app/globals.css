@@ -82,3 +82,8 @@ html {
   background-size: 12px 12px;
   height: 6px;
 }
+
+/* Radial gradient utility */
+.bg-gradient-radial {
+  background-image: radial-gradient(ellipse at center, var(--tw-gradient-stops));
+}

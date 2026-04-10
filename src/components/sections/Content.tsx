@@ -7,6 +7,7 @@ import {
   StaggerItem,
 } from "../AnimatedSection";
 import { DotsDivider } from "../Decorations";
+import { Floating, LionSVG } from "../BiblicalIllustrations";
 
 const receiveItems = [
   "25 histórias bíblicas curtas e adaptadas",
@@ -57,10 +58,14 @@ function BulletIcon() {
 export function ContentSection() {
   return (
     <section
-      className="bg-white px-6 py-16 md:px-12 md:py-24"
+      className="relative overflow-hidden bg-white px-6 py-16 md:px-12 md:py-24"
       aria-labelledby="content-heading"
     >
-      <div className="mx-auto max-w-5xl">
+      <Floating className="absolute -left-4 top-1/3 opacity-25 md:left-[4%] md:opacity-35" duration={8} yRange={16}>
+        <LionSVG className="h-32 w-32 md:h-44 md:w-44" />
+      </Floating>
+
+      <div className="relative z-10 mx-auto max-w-5xl">
         <FadeInUp className="text-center">
           <h2
             id="content-heading"
@@ -100,21 +105,6 @@ export function ContentSection() {
             <FadeInUp>
               <div className="relative mb-6 text-center md:text-left">
                 <h3 className="text-xl font-bold">Por que você vai amar</h3>
-                <svg
-                  className="absolute -right-2 -top-3 hidden h-16 w-32 text-pink/40 md:block"
-                  viewBox="0 0 200 80"
-                  fill="none"
-                  aria-hidden="true"
-                >
-                  <ellipse
-                    cx="100"
-                    cy="40"
-                    rx="90"
-                    ry="35"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  />
-                </svg>
               </div>
             </FadeInUp>
             <StaggerContainer className="space-y-4">

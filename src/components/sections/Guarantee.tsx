@@ -1,6 +1,7 @@
 "use client";
 
 import { FadeInUp } from "../AnimatedSection";
+import { Floating, CrossSVG } from "../BiblicalIllustrations";
 
 function ShieldIcon() {
   return (
@@ -23,8 +24,12 @@ function ShieldIcon() {
 
 export function GuaranteeSection() {
   return (
-    <section className="bg-white px-6 py-16 md:px-12 md:py-20" aria-labelledby="guarantee-heading">
-      <FadeInUp className="mx-auto max-w-2xl text-center">
+    <section className="relative overflow-hidden bg-white px-6 py-16 md:px-12 md:py-20" aria-labelledby="guarantee-heading">
+      <Floating className="absolute -left-2 top-1/2 -translate-y-1/2 opacity-20 md:left-[8%] md:opacity-30" duration={9} yRange={12} rotate={5}>
+        <CrossSVG className="h-24 w-20 md:h-32 md:w-26" />
+      </Floating>
+
+      <FadeInUp className="relative z-10 mx-auto max-w-2xl text-center">
         <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-green/10">
           <ShieldIcon />
         </div>
