@@ -1,131 +1,91 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  FadeInUp,
-  StaggerContainer,
-  StaggerItem,
-} from "../AnimatedSection";
-import { DotsDivider } from "../Decorations";
-import { Floating, LionSVG } from "../BiblicalIllustrations";
+import { FadeInUp, StaggerContainer, StaggerItem } from "../AnimatedSection";
 
 const receiveItems = [
-  "25 histórias bíblicas curtas e adaptadas",
-  "Pergunta simples para interação com a criança",
-  "Versículo bíblico",
-  "Frases para repetir juntos",
-  "Momento devocional guiado",
-  "Desenhos para colorir",
+  { icon: "📖", text: "25 histórias bíblicas curtas e adaptadas", bg: "from-[#D6F0FF] to-[#EEF8FF]", border: "border-sky/40" },
+  { icon: "❓", text: "Pergunta simples para interação com a criança", bg: "from-[#FFE8F0] to-[#FFF5F8]", border: "border-pink/40" },
+  { icon: "✝️", text: "Versículo bíblico em cada história",           bg: "from-[#FFF8D6] to-[#FFFAEE]", border: "border-gold/40" },
+  { icon: "🗣️", text: "Frases para repetir juntos em família",        bg: "from-[#FFF8D6] to-[#FFFDF0]", border: "border-gold/40" },
+  { icon: "🙏", text: "Momento devocional guiado passo a passo",      bg: "from-[#D6F5E0] to-[#F0FFF5]", border: "border-green/40" },
+  { icon: "🎨", text: "Desenhos para colorir em cada história",       bg: "from-[#FFE8D6] to-[#FFF5EE]", border: "border-coral/40" },
 ];
 
-const loveReasons = [
-  "Incentiva o relacionamento com Deus desde cedo",
-  "Cria momentos de conexão em família ou em grupo",
-  "Facilita o ensino bíblico no dia a dia",
-  "Não exige preparação — é só abrir e usar",
-  "Torna o aprendizado leve e envolvente para a criança",
-  "Ajuda a criar uma rotina simples e constante com Deus",
+const benefits = [
+  { icon: "🌱", text: "Incentiva o relacionamento com Deus desde cedo",  color: "text-green" },
+  { icon: "👨‍👩‍👧", text: "Cria momentos de conexão em família",              color: "text-coral" },
+  { icon: "📅", text: "Facilita o ensino bíblico no dia a dia",           color: "text-[#2980B9]" },
+  { icon: "🚀", text: "Não exige preparação — é só abrir e usar",         color: "text-orange" },
+  { icon: "😄", text: "Torna o aprendizado leve e envolvente",            color: "text-gold" },
+  { icon: "🔄", text: "Ajuda a criar uma rotina constante com Deus",      color: "text-pink" },
 ];
-
-function CheckIcon() {
-  return (
-    <svg
-      className="mt-0.5 h-5 w-5 flex-shrink-0 text-green"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth={3}
-      aria-hidden="true"
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-    </svg>
-  );
-}
-
-function BulletIcon() {
-  return (
-    <svg
-      className="mt-0.5 h-5 w-5 flex-shrink-0 text-coral"
-      fill="currentColor"
-      viewBox="0 0 24 24"
-      aria-hidden="true"
-    >
-      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-    </svg>
-  );
-}
 
 export function ContentSection() {
   return (
-    <section
-      className="relative overflow-hidden bg-white px-6 py-16 md:px-12 md:py-24"
-      aria-labelledby="content-heading"
-    >
-      <Floating className="absolute -left-4 top-1/3 opacity-25 md:left-[4%] md:opacity-35" duration={8} yRange={16}>
-        <LionSVG className="h-32 w-32 md:h-44 md:w-44" />
-      </Floating>
+    <section className="relative overflow-hidden bg-white px-6 py-16 md:px-12 md:py-24" aria-labelledby="content-heading">
+      {/* Rainbow top border */}
+      <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-sky via-gold via-pink to-yellow" />
+
+      {/* Soft background blobs */}
+      <div className="absolute -right-40 top-0 h-96 w-96 rounded-full bg-yellow/20 blur-[80px]" aria-hidden="true" />
+      <div className="absolute -left-40 bottom-0 h-96 w-96 rounded-full bg-sky/20 blur-[80px]" aria-hidden="true" />
 
       <div className="relative z-10 mx-auto max-w-5xl">
         <FadeInUp className="text-center">
-          <h2
-            id="content-heading"
-            className="text-3xl font-extrabold md:text-4xl"
+          <motion.span
+            className="mb-4 inline-block rounded-full border-2 border-gold/40 bg-yellow/20 px-5 py-2 text-sm font-extrabold text-[#B8860B] shadow-md"
+            animate={{ scale: [1, 1.04, 1] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
           >
+            🎁 O que está incluído
+          </motion.span>
+          <h2 id="content-heading" className="text-3xl font-extrabold md:text-4xl">
             Tudo pronto para você usar{" "}
-            <span className="text-coral">hoje mesmo</span>
+            <span className="text-coral">hoje mesmo!</span>
           </h2>
+          <p className="mt-3 text-lg text-foreground/55 max-w-xl mx-auto">
+            Um material completo que transforma qualquer momento em uma experiência espiritual inesquecível ✨
+          </p>
         </FadeInUp>
 
-        <div className="mt-12 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-16">
-          {/* Left column - What you receive */}
-          <div>
-            <FadeInUp>
-              <h3 className="mb-6 text-center text-xl font-bold md:text-left">
-                Você vai receber
-              </h3>
-            </FadeInUp>
-            <StaggerContainer className="space-y-4">
-              {receiveItems.map((item) => (
-                <StaggerItem key={item}>
-                  <motion.div
-                    className="flex items-start gap-3"
-                    whileHover={{ x: 4 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                  >
-                    <CheckIcon />
-                    <span className="text-lg">{item}</span>
-                  </motion.div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
-          </div>
-
-          {/* Right column - Why you'll love it */}
-          <div>
-            <FadeInUp>
-              <div className="relative mb-6 text-center md:text-left">
-                <h3 className="text-xl font-bold">Por que você vai amar</h3>
+        {/* Receive items */}
+        <FadeInUp delay={0.1} className="mt-12">
+          <h3 className="text-center text-xl font-extrabold mb-6">📦 Você vai receber</h3>
+        </FadeInUp>
+        <StaggerContainer className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+          {receiveItems.map((item) => (
+            <StaggerItem key={item.text}>
+              <div className={`shine-card flex items-center gap-4 rounded-2xl border-2 bg-gradient-to-br ${item.bg} ${item.border} p-5 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg`}>
+                <span className="text-4xl flex-shrink-0 drop-shadow-sm">{item.icon}</span>
+                <span className="text-sm font-bold text-foreground/80 leading-snug">{item.text}</span>
               </div>
-            </FadeInUp>
-            <StaggerContainer className="space-y-4">
-              {loveReasons.map((item) => (
-                <StaggerItem key={item}>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
+
+        {/* Benefits */}
+        <FadeInUp delay={0.25} className="mt-14">
+          <div className="relative overflow-hidden rounded-[28px] p-[3px]"
+            style={{ background: "linear-gradient(135deg, #FFD93D, #FF8C42, #FF6B6B, #FFAA00, #FFE566, #FFD93D)" }}
+          >
+            <div className="rounded-[26px] bg-white p-8">
+              <h3 className="text-center text-xl font-extrabold mb-7">💛 Por que você vai amar</h3>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {benefits.map((item) => (
                   <motion.div
-                    className="flex items-start gap-3"
-                    whileHover={{ x: 4 }}
+                    key={item.text}
+                    className="flex items-center gap-3"
+                    whileHover={{ x: 6 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
-                    <BulletIcon />
-                    <span className="text-lg">{item}</span>
+                    <span className="text-3xl flex-shrink-0">{item.icon}</span>
+                    <span className={`text-base font-semibold ${item.color}`}>{item.text}</span>
                   </motion.div>
-                </StaggerItem>
-              ))}
-            </StaggerContainer>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-
-        <FadeInUp delay={0.3} className="mt-16">
-          <DotsDivider />
         </FadeInUp>
       </div>
     </section>

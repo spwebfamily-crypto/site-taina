@@ -3,92 +3,124 @@
 import { motion } from "framer-motion";
 import { FadeInUp } from "../AnimatedSection";
 import { CTAButton } from "../CTAButton";
-import { Floating, SheepSVG, DoveSVG } from "../BiblicalIllustrations";
+
+const confetti = [
+  { left: "5%",  top: "10%", color: "#FFD93D", size: 14, delay: 0 },
+  { left: "92%", top: "15%", color: "#FF6B6B", size: 10, delay: 0.4 },
+  { left: "10%", top: "80%", color: "#6BCB77", size: 12, delay: 0.8 },
+  { left: "88%", top: "75%", color: "#4D96FF", size: 14, delay: 0.2 },
+  { left: "50%", top: "5%",  color: "#FFE566", size: 10, delay: 1.0 },
+  { left: "30%", top: "90%", color: "#FF6B6B", size: 12, delay: 0.6 },
+  { left: "70%", top: "88%", color: "#FFD93D", size: 10, delay: 1.2 },
+];
 
 export function FinalCTASection() {
   return (
-    <section
-      className="relative overflow-hidden bg-gradient-to-b from-background to-pink-light/30 px-6 py-20 md:px-12 md:py-28"
-      aria-labelledby="final-cta-heading"
-    >
-      {/* Background blobs */}
-      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="absolute -left-32 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-gold/5" />
-        <div className="absolute -right-32 top-1/3 h-80 w-80 rounded-full bg-coral/5" />
-      </div>
+    <section className="relative overflow-hidden px-6 py-20 md:px-12 md:py-28" aria-labelledby="final-cta-heading">
 
-      <Floating className="absolute left-[3%] bottom-[15%] opacity-30 md:left-[8%] md:opacity-40" duration={7} yRange={16}>
-        <SheepSVG className="h-28 w-36 md:h-36 md:w-48" />
-      </Floating>
-      <Floating className="absolute right-[3%] top-[10%] opacity-25 md:right-[8%] md:opacity-35" duration={8} delay={1} yRange={18}>
-        <DoveSVG className="h-28 w-36 md:h-36 md:w-48" />
-      </Floating>
+      {/* Sunny gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#FFF9E6] via-[#FFF0CC] to-[#FFE8D6]" />
+
+      {/* Rainbow arc */}
+      <div className="absolute -top-60 left-1/2 -translate-x-1/2 w-[160vw] h-[600px] rounded-[50%] opacity-15"
+        style={{ background: "conic-gradient(from 200deg at 50% 100%, #FF6B6B, #FFD93D, #FFAA00, #FF8C42, #FFE566, #FF6B6B)" }}
+        aria-hidden="true"
+      />
+
+      {/* Glow blobs */}
+      <div className="absolute -left-32 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-gold/30 blur-[80px]" aria-hidden="true" />
+      <div className="absolute -right-32 top-1/3 h-80 w-80 rounded-full bg-pink/25 blur-[80px]" aria-hidden="true" />
+
+      {/* Confetti */}
+      {confetti.map((c, i) => (
+        <motion.div
+          key={i}
+          className="absolute rounded-full"
+          style={{ left: c.left, top: c.top, width: c.size, height: c.size, backgroundColor: c.color }}
+          animate={{ y: [0, -22, 0], opacity: [0.5, 1, 0.5], scale: [0.8, 1.3, 0.8] }}
+          transition={{ duration: 3.5, repeat: Infinity, delay: c.delay, ease: "easeInOut" }}
+          aria-hidden="true"
+        />
+      ))}
 
       <div className="relative z-10 mx-auto max-w-3xl text-center">
+
         <FadeInUp>
-          <p className="text-xl font-bold leading-relaxed md:text-2xl">
+          <motion.div
+            className="text-6xl mb-4 inline-block"
+            animate={{ rotate: [-10, 10, -10], scale: [1, 1.15, 1] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          >
+            🌟
+          </motion.div>
+          <p className="text-xl font-extrabold leading-relaxed text-foreground/80 md:text-2xl">
             <span className="text-coral">Pequenos momentos hoje</span>
             <br />
-            podem gerar <span className="text-gold">grandes raízes</span> no
-            futuro.
+            podem gerar <span className="rainbow-text font-black text-2xl md:text-3xl">grandes raízes</span> para sempre.
           </p>
         </FadeInUp>
 
         <FadeInUp delay={0.15}>
-          <h2
-            id="final-cta-heading"
-            className="mt-10 text-3xl font-black md:text-4xl"
-          >
-            Comece hoje mesmo a construir esse tempo com Deus.
+          <h2 id="final-cta-heading" className="mt-8 text-3xl font-black text-foreground md:text-4xl leading-tight">
+            Dê ao seu filho o maior presente:{" "}
+            <span className="text-coral drop-shadow-[0_2px_12px_rgba(232,115,74,0.3)]">conhecer a Deus</span>{" "}
+            desde pequeno 💛
           </h2>
         </FadeInUp>
 
+        {/* Price card */}
         <FadeInUp delay={0.25}>
-          <p className="mt-6 text-lg text-foreground/60">
-            Acesso imediato ao{" "}
-            <strong className="text-foreground">
-              Devocional Pequenos Corações
-            </strong>
-          </p>
-        </FadeInUp>
-
-        <FadeInUp delay={0.35}>
-          <div className="mt-6 flex items-baseline justify-center gap-1">
-            <span className="text-lg text-foreground/50">Por apenas</span>
-            <span className="ml-2 text-lg text-foreground/50">R$</span>
-            <span className="text-5xl font-black text-coral">14,90</span>
+          <div className="mt-8 relative overflow-hidden rounded-[28px] p-[3px]"
+            style={{ background: "linear-gradient(135deg, #FFD93D, #FF8C42, #E8734A, #FFD93D)" }}
+          >
+            <div className="shine-card rounded-[26px] bg-white p-8">
+              <p className="text-base text-foreground/60">
+                Acesso imediato ao <strong className="text-foreground">Devocional Pequenos Corações</strong>
+              </p>
+              <div className="mt-3 flex items-baseline justify-center gap-2">
+                <span className="text-lg text-foreground/40 line-through">R$ 49,90</span>
+                <span className="text-base text-foreground/50">por apenas</span>
+              </div>
+              <div className="flex items-baseline justify-center gap-1 mt-1">
+                <span className="text-2xl font-bold text-foreground/50">R$</span>
+                <motion.span
+                  className="text-8xl font-black text-coral leading-none drop-shadow-[0_4px_16px_rgba(232,115,74,0.35)]"
+                  animate={{ scale: [1, 1.04, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  14,90
+                </motion.span>
+              </div>
+              <p className="mt-2 text-sm font-extrabold text-green">🎉 Economize R$ 35,00 hoje!</p>
+            </div>
           </div>
         </FadeInUp>
 
-        <FadeInUp delay={0.45} className="mt-8 flex flex-col items-center">
-          <motion.svg
-            initial={{ opacity: 0, y: -10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.6, duration: 0.5 }}
-            className="mb-4 h-16 w-16 text-purple-400"
-            viewBox="0 0 64 64"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M20 10C20 10 15 35 32 42C49 49 44 55 44 55"
-              stroke="currentColor"
-              strokeWidth="3"
-              strokeLinecap="round"
-              fill="none"
-            />
-            <path
-              d="M38 50L44 56L50 48"
-              stroke="currentColor"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-            />
-          </motion.svg>
+        <FadeInUp delay={0.35} className="mt-8 flex flex-col items-center gap-4">
+          <CTAButton className="text-xl px-14 py-6" />
+          <p className="text-sm text-foreground/45 flex flex-wrap justify-center gap-3">
+            <span>🔒 Pagamento seguro</span>
+            <span>•</span>
+            <span>🛡️ Garantia de 7 dias</span>
+            <span>•</span>
+            <span>⚡ Acesso imediato</span>
+          </p>
+        </FadeInUp>
 
-          <CTAButton className="text-xl px-12 py-6" />
+        {/* Bible verse */}
+        <FadeInUp delay={0.45}>
+          <div className="mt-10 relative overflow-hidden rounded-2xl p-[2px]"
+            style={{ background: "linear-gradient(135deg, #FFD93D, #FFAA00, #FF8C42, #FFE566)" }}
+          >
+            <div className="rounded-[14px] bg-white/90 backdrop-blur-sm p-6">
+              <p className="text-foreground/70 italic text-base font-semibold">
+                "Deixai as crianças virem a mim, e não as impeçais;
+                <br />
+                porque o reino de Deus é para os que se assemelham a elas."
+              </p>
+              <p className="mt-2 text-sm font-extrabold text-[#B8860B]">— Marcos 10:14</p>
+            </div>
+          </div>
         </FadeInUp>
       </div>
     </section>

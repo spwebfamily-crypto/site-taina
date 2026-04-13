@@ -1,51 +1,57 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { FadeInUp } from "../AnimatedSection";
-import { Floating, CrossSVG } from "../BiblicalIllustrations";
-
-function ShieldIcon() {
-  return (
-    <svg
-      className="h-16 w-16 text-green"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth={1.5}
-      aria-hidden="true"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
-      />
-    </svg>
-  );
-}
 
 export function GuaranteeSection() {
   return (
     <section className="relative overflow-hidden bg-white px-6 py-16 md:px-12 md:py-20" aria-labelledby="guarantee-heading">
-      <Floating className="absolute -left-2 top-1/2 -translate-y-1/2 opacity-20 md:left-[8%] md:opacity-30" duration={9} yRange={12} rotate={5}>
-        <CrossSVG className="h-24 w-20 md:h-32 md:w-26" />
-      </Floating>
+      <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-green via-gold to-yellow" />
 
-      <FadeInUp className="relative z-10 mx-auto max-w-2xl text-center">
-        <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-green/10">
-          <ShieldIcon />
-        </div>
+      {/* Soft glow */}
+      <div className="absolute inset-0 opacity-40" style={{ backgroundImage: "radial-gradient(circle at 50% 50%, #D6F5E0 0%, transparent 60%)" }} aria-hidden="true" />
 
-        <h2
-          id="guarantee-heading"
-          className="mt-6 text-2xl font-extrabold md:text-3xl"
+      <FadeInUp className="relative z-10 mx-auto max-w-2xl">
+        {/* Rainbow border wrapper */}
+        <div className="relative overflow-hidden rounded-[32px] p-[3px]"
+          style={{ background: "linear-gradient(135deg, #6BCB77, #FFD93D, #FFAA00, #FF8C42, #6BCB77)" }}
         >
-          Você pode testar com tranquilidade
-        </h2>
+          <div className="shine-card rounded-[30px] bg-gradient-to-br from-[#F0FFF5] to-white p-10 text-center">
+            <motion.div
+              className="mx-auto flex h-28 w-28 items-center justify-center rounded-full text-6xl shadow-lg"
+              style={{ background: "linear-gradient(135deg, #D6F5E0, #B8F0C8)" }}
+              animate={{ scale: [1, 1.08, 1], rotate: [0, 5, -5, 0] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+            >
+              🛡️
+            </motion.div>
 
-        <p className="mt-4 text-lg leading-relaxed text-foreground/60">
-          Caso não fique satisfeito, é possível solicitar{" "}
-          <strong className="text-foreground">reembolso em até 7 dias</strong>.
-          Sem perguntas, sem complicação.
-        </p>
+            <h2 id="guarantee-heading" className="mt-6 text-2xl font-extrabold md:text-3xl">
+              Garantia de 7 dias
+            </h2>
+            <p className="mt-1 text-sm font-extrabold uppercase tracking-widest text-green">
+              ✅ Risco zero para você
+            </p>
+
+            <p className="mt-5 text-lg leading-relaxed text-foreground/65">
+              Experimente com total tranquilidade. Se por qualquer motivo não ficar satisfeito,{" "}
+              <strong className="text-foreground">devolvemos 100% do seu dinheiro</strong>{" "}
+              em até 7 dias. Sem perguntas, sem burocracia. Prometemos! 🤝
+            </p>
+
+            <div className="mt-7 flex flex-wrap justify-center gap-3">
+              {[
+                { icon: "✅", label: "Reembolso total",  bg: "bg-green/10 text-green border-green/20" },
+                { icon: "🤐", label: "Sem perguntas",    bg: "bg-sky/20 text-[#2980B9] border-sky/30" },
+                { icon: "⚡", label: "Processo simples", bg: "bg-gold/15 text-[#B8860B] border-gold/30" },
+              ].map((b) => (
+                <span key={b.label} className={`flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-bold ${b.bg}`}>
+                  {b.icon} {b.label}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
       </FadeInUp>
     </section>
   );
