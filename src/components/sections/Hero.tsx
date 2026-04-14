@@ -3,173 +3,204 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { CTAButton } from "../CTAButton";
-import { Floating, RainbowSVG, SheepSVG } from "../BiblicalIllustrations";
 
-const eyebrowText = "Para crian\u00E7as de 2 a 5 anos";
-const brandText = "Devocional Pequenos Cora\u00E7\u00F5es";
-const titleLineOne = "Um cantinho de f\u00E9";
-const titleLineTwo = "para o cora\u00E7\u00E3o do";
-const titleLineThree = "seu filho";
-const descriptionText =
-  "25 hist\u00F3rias b\u00EDblicas curtas, delicadas e f\u00E1ceis de viver em fam\u00EDlia, com um visual mais leve, acolhedor e cheio de do\u00E7ura.";
-const imageAlt = "Devocional Pequenos Cora\u00E7\u00F5es - Capa do livro";
-
-const highlights = [
-  "25 hist\u00F3rias curtas",
-  "PDF para imprimir",
-  "Acesso imediato",
+const confetti = [
+  { left: "6%",  top: "12%", color: "#FFD93D", size: 14, delay: 0,   dur: 3.2 },
+  { left: "12%", top: "55%", color: "#FF6B6B", size: 10, delay: 0.4, dur: 4.0 },
+  { left: "20%", top: "78%", color: "#6BCB77", size: 12, delay: 0.8, dur: 3.5 },
+  { left: "80%", top: "10%", color: "#4D96FF", size: 14, delay: 0.2, dur: 3.8 },
+  { left: "88%", top: "42%", color: "#FFAA00", size: 10, delay: 1.0, dur: 4.2 },
+  { left: "75%", top: "70%", color: "#FF6B6B", size: 12, delay: 0.6, dur: 3.0 },
+  { left: "50%", top: "6%",  color: "#FFD93D", size: 10, delay: 1.2, dur: 3.6 },
+  { left: "35%", top: "85%", color: "#4D96FF", size: 14, delay: 0.3, dur: 4.5 },
+  { left: "93%", top: "65%", color: "#6BCB77", size: 10, delay: 0.9, dur: 3.3 },
+  { left: "3%",  top: "35%", color: "#FFD93D", size: 12, delay: 1.5, dur: 4.0 },
+  { left: "60%", top: "90%", color: "#FF6B6B", size: 10, delay: 0.7, dur: 3.7 },
+  { left: "45%", top: "20%", color: "#FFD93D", size: 8,  delay: 1.1, dur: 2.8 },
 ];
 
-const ambientSheep = [
-  { className: "left-[4%] top-[14%] hidden lg:block", size: "h-20 w-20", duration: 6.2, delay: 0.1, yRange: 10 },
-  { className: "left-[8%] bottom-[16%] hidden md:block", size: "h-24 w-24", duration: 5.8, delay: 0.6, yRange: 12 },
-  { className: "right-[9%] top-[18%] hidden xl:block", size: "h-[4.5rem] w-[4.5rem]", duration: 6.8, delay: 0.3, yRange: 11 },
-  { className: "right-[5%] bottom-[12%] hidden lg:block", size: "h-24 w-24", duration: 5.4, delay: 0.9, yRange: 13 },
-];
-
-const frameSheep = [
-  { className: "-left-8 bottom-10 hidden md:block", size: "h-[4.5rem] w-[4.5rem]", duration: 5.2, delay: 0.2, yRange: 9 },
-  { className: "-right-6 top-10 hidden md:block", size: "h-16 w-16", duration: 5.7, delay: 0.5, yRange: 8 },
-  { className: "right-10 -bottom-4 hidden lg:block", size: "h-20 w-20", duration: 6.1, delay: 0.8, yRange: 10 },
+const floatingEmojis = [
+  { emoji: "⭐", left: "8%",  top: "30%", delay: 0,   dur: 4 },
+  { emoji: "🌈", left: "88%", top: "25%", delay: 0.5, dur: 5 },
+  { emoji: "💛", left: "5%",  top: "65%", delay: 1,   dur: 3.5 },
+  { emoji: "🕊️", left: "92%", top: "60%", delay: 0.3, dur: 4.5 },
+  { emoji: "✝️", left: "18%", top: "88%", delay: 1.5, dur: 4 },
+  { emoji: "💖", left: "78%", top: "82%", delay: 0.8, dur: 3.8 },
 ];
 
 export function HeroSection() {
   return (
     <section className="relative min-h-[100vh] overflow-hidden" aria-labelledby="hero-heading">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#FFFDF9] via-[#FFF7F2] to-[#F7FAFF]" />
-      <div
-        className="absolute inset-x-0 top-0 h-[52vh] opacity-80"
-        style={{
-          background:
-            "radial-gradient(circle at top, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0) 72%)",
-        }}
+
+      {/* ── Sunny sky gradient ── */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#FFF9E6] via-[#FFF0CC] to-[#FFE8D6]" />
+
+      {/* Rainbow arc top */}
+      <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[140vw] h-[500px] rounded-[50%] opacity-20"
+        style={{ background: "conic-gradient(from 200deg at 50% 100%, #FF6B6B, #FFD93D, #FFAA00, #FF8C42, #FFE566, #FF6B6B)" }}
         aria-hidden="true"
       />
-      <div className="absolute -left-24 top-0 h-[420px] w-[420px] rounded-full bg-[#FCEEF1] blur-[110px]" aria-hidden="true" />
-      <div className="absolute right-0 top-16 h-[360px] w-[360px] rounded-full bg-[#EAF5FF] blur-[100px]" aria-hidden="true" />
-      <div className="absolute bottom-0 left-1/3 h-[280px] w-[280px] rounded-full bg-[#FFF5DD] blur-[90px]" aria-hidden="true" />
 
-      {ambientSheep.map((sheep, index) => (
-        <Floating
-          key={index}
-          className={`absolute ${sheep.className}`}
-          duration={sheep.duration}
-          delay={sheep.delay}
-          yRange={sheep.yRange}
-        >
-          <div className="rounded-full bg-white/75 p-3 shadow-[0_16px_36px_rgba(199,168,147,0.18)] backdrop-blur-sm">
-            <SheepSVG className={`${sheep.size} text-[#F8F4EF]`} />
-          </div>
-        </Floating>
+      {/* Soft glow blobs */}
+      <div className="absolute -left-32 top-0 h-[500px] w-[500px] rounded-full bg-yellow/40 blur-[100px]" aria-hidden="true" />
+      <div className="absolute -right-32 top-1/4 h-[400px] w-[400px] rounded-full bg-pink/30 blur-[80px]" aria-hidden="true" />
+      <div className="absolute bottom-0 left-1/3 h-[300px] w-[300px] rounded-full bg-sky/30 blur-[80px]" aria-hidden="true" />
+
+      {/* Confetti dots */}
+      {confetti.map((c, i) => (
+        <motion.div
+          key={i}
+          className="absolute rounded-full"
+          style={{ left: c.left, top: c.top, width: c.size, height: c.size, backgroundColor: c.color }}
+          animate={{ y: [0, -20, 0], opacity: [0.5, 1, 0.5], scale: [0.8, 1.2, 0.8] }}
+          transition={{ duration: c.dur, repeat: Infinity, delay: c.delay, ease: "easeInOut" }}
+          aria-hidden="true"
+        />
       ))}
 
+      {/* Floating emojis */}
+      {floatingEmojis.map((e, i) => (
+        <motion.div
+          key={i}
+          className="absolute text-2xl select-none"
+          style={{ left: e.left, top: e.top }}
+          animate={{ y: [0, -16, 0], rotate: [-5, 5, -5] }}
+          transition={{ duration: e.dur, repeat: Infinity, delay: e.delay, ease: "easeInOut" }}
+          aria-hidden="true"
+        >
+          {e.emoji}
+        </motion.div>
+      ))}
+
+      {/* Bottom wave */}
       <div className="absolute bottom-0 left-0 right-0" aria-hidden="true">
-        <svg viewBox="0 0 1440 120" fill="none" preserveAspectRatio="none" className="h-16 w-full md:h-24">
-          <path d="M0 60C360 116 720 8 1080 54C1260 78 1380 48 1440 60V120H0V60Z" fill="#FFFCF8" />
+        <svg viewBox="0 0 1440 100" fill="none" preserveAspectRatio="none" className="h-14 w-full md:h-20">
+          <path d="M0 50C360 100 720 0 1080 50C1260 75 1380 40 1440 50V100H0V50Z" fill="#FFFBF5" />
         </svg>
       </div>
 
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-10 px-6 pb-24 pt-14 md:flex-row md:gap-14 md:px-12 md:pb-32 md:pt-20">
+      {/* ── Main content ── */}
+      <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-6 px-5 pb-24 pt-12 md:flex-row md:gap-12 md:px-12 md:pb-36 md:pt-20">
+
+        {/* Text side - MOBILE OPTIMIZED */}
         <motion.div
-          initial={{ opacity: 0, x: -36 }}
+          initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-1 flex-col items-center text-center md:items-start md:text-left"
+          className="flex flex-1 flex-col items-center text-center md:items-start md:text-left w-full"
         >
+          {/* Badge - BIGGER ON MOBILE */}
           <motion.div
-            initial={{ opacity: 0, y: -18 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15 }}
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/80 px-5 py-2 text-sm font-extrabold text-[#B88472] shadow-[0_10px_24px_rgba(194,160,145,0.16)] backdrop-blur-sm"
+            transition={{ delay: 0.2 }}
+            className="bounce-badge mb-4 inline-flex items-center gap-2 rounded-full border-2 border-gold/50 bg-white px-4 py-2.5 text-xs font-extrabold text-coral shadow-lg md:text-sm"
           >
-            <span className="h-2.5 w-2.5 rounded-full bg-[#E9C58A]" />
-            {eyebrowText}
+            <span className="text-lg md:text-base">🌟</span> 
+            <span>Devocional Pequenos Corações</span>
+            <span className="text-lg md:text-base">🌟</span>
           </motion.div>
 
-          <p className="mb-3 text-sm font-black uppercase tracking-[0.18em] text-[#C79C8D]">
-            {brandText}
-          </p>
-
-          <h1 id="hero-heading" className="max-w-xl text-4xl font-black leading-[1.08] tracking-tight md:text-5xl lg:text-[3.65rem]">
-            <span className="text-[#B97F6B]">{titleLineOne}</span>
-            <br />
-            <span className="text-foreground/86">{titleLineTwo}</span>
-            <br />
-            <span className="text-[#D29B76]">{titleLineThree}</span>
+          {/* Headline - LARGER & CLEARER ON MOBILE */}
+          <h1 id="hero-heading" className="mb-4 text-[2rem] font-black leading-[1.1] tracking-tight md:text-5xl lg:text-[3.6rem]">
+            <span className="rainbow-text block mb-1">Plante a fé</span>
+            <span className="text-foreground block">no coração do</span>
+            <motion.span
+              className="inline-block text-coral drop-shadow-[0_2px_12px_rgba(232,115,74,0.4)]"
+              animate={{ scale: [1, 1.03, 1] }}
+              transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              seu filho 💛
+            </motion.span>
           </h1>
 
+          {/* Description - SHORTER ON MOBILE */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.35 }}
-            className="mt-6 max-w-lg text-lg leading-relaxed text-foreground/68 md:text-xl"
+            transition={{ delay: 0.5 }}
+            className="mb-6 max-w-lg text-base leading-relaxed text-foreground/70 md:text-xl"
           >
-            {descriptionText}
+            <strong className="text-coral">25 histórias bíblicas</strong> encantadoras que criam momentos{" "}
+            <strong className="text-[#B8860B]">inesquecíveis</strong> — leve, divertido e cheio de amor! 🎉
           </motion.p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.55 }}
-            className="mt-8"
+          {/* CTA - MUCH BIGGER ON MOBILE */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 0.7 }}
+            className="w-full md:w-auto"
           >
-            <CTAButton />
+            <CTAButton className="w-full md:w-auto text-base md:text-lg px-8 py-4 md:px-10 md:py-5" />
           </motion.div>
 
+          {/* Trust badges - STACKED ON MOBILE */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.75 }}
-            className="mt-7 flex flex-wrap items-center justify-center gap-3 md:justify-start"
+            transition={{ delay: 1 }}
+            className="mt-5 flex flex-col items-center gap-3 md:items-start w-full"
           >
-            {highlights.map((item) => (
-              <span
-                key={item}
-                className="rounded-full border border-white/75 bg-white/72 px-4 py-2 text-sm font-bold text-foreground/62 shadow-[0_10px_24px_rgba(194,160,145,0.14)] backdrop-blur-sm"
-              >
-                {item}
-              </span>
-            ))}
+            {/* Stars */}
+            <div className="flex items-center gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <motion.span
+                  key={i}
+                  className="text-xl text-gold"
+                  animate={{ scale: [1, 1.3, 1] }}
+                  transition={{ duration: 1, repeat: Infinity, delay: i * 0.15 }}
+                >★</motion.span>
+              ))}
+              <span className="ml-2 text-xs font-bold text-foreground/60 md:text-sm">+500 famílias transformadas</span>
+            </div>
+            {/* Features - VERTICAL ON MOBILE */}
+            <div className="flex flex-col md:flex-row items-center gap-2 md:gap-3 text-xs font-semibold text-foreground/50">
+              <span className="rounded-full bg-green/15 px-3 py-1.5 text-green">⚡ Acesso imediato</span>
+              <span className="rounded-full bg-sky/30 px-3 py-1.5 text-[#2980B9]">📄 PDF para imprimir</span>
+              <span className="rounded-full bg-pink-light px-3 py-1.5 text-coral">🛡️ 7 dias de garantia</span>
+            </div>
           </motion.div>
         </motion.div>
 
+        {/* Book image side - SMALLER ON MOBILE */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.92, y: 28 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.25, ease: "easeOut" }}
-          className="flex flex-1 items-center justify-center"
+          initial={{ opacity: 0, scale: 0.75, rotate: 6 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+          className="flex flex-1 items-center justify-center w-full md:w-auto"
         >
-          <div className="relative">
-            {frameSheep.map((sheep, index) => (
-              <Floating
-                key={index}
-                className={`absolute ${sheep.className}`}
-                duration={sheep.duration}
-                delay={sheep.delay}
-                yRange={sheep.yRange}
-              >
-                <div className="rounded-full bg-white/82 p-2.5 shadow-[0_16px_34px_rgba(194,160,145,0.16)] backdrop-blur-sm">
-                  <SheepSVG className={sheep.size} />
-                </div>
-              </Floating>
-            ))}
+          <div className="relative w-full max-w-[280px] md:max-w-none">
+            {/* Multi-layer glow */}
+            <div className="absolute -inset-8 md:-inset-12 rounded-full bg-gradient-to-br from-yellow/60 via-gold/40 to-pink/30 blur-3xl" />
+            <div className="absolute -inset-4 md:-inset-6 rounded-full bg-gradient-to-tr from-coral/20 to-transparent blur-2xl" />
 
-            <div className="relative rounded-[2.75rem] border border-white/80 bg-white/58 px-6 py-8 shadow-[0_28px_80px_rgba(195,160,142,0.2)] backdrop-blur-sm md:px-8">
-              <RainbowSVG className="pointer-events-none absolute -top-10 left-1/2 hidden w-[330px] -translate-x-1/2 opacity-45 md:block" />
+            {/* Spinning rings - HIDDEN ON SMALL MOBILE */}
+            <motion.div
+              className="absolute -inset-6 md:-inset-8 rounded-full border-2 md:border-4 border-dashed border-gold/40 hidden sm:block"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              aria-hidden="true"
+            />
+            <motion.div
+              className="absolute -inset-3 md:-inset-4 rounded-full border border-dashed border-pink/30 hidden sm:block"
+              animate={{ rotate: -360 }}
+              transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+              aria-hidden="true"
+            />
 
-              <div className="float-animation relative">
-                <Image
-                  src="/images/capa-livro-hero-soft.png"
-                  alt={imageAlt}
-                  width={560}
-                  height={560}
-                  preload
-                  quality={100}
-                  sizes="(max-width: 640px) 320px, (max-width: 768px) 390px, (max-width: 1024px) 470px, 560px"
-                  className="relative h-auto w-[320px] sm:w-[390px] md:w-[470px] lg:w-[560px] drop-shadow-[0_24px_60px_rgba(194,145,121,0.28)]"
-                  style={{ filter: "saturate(1.04) contrast(1.03)" }}
-                />
-              </div>
+            {/* Book - NO WHITE BOX */}
+            <div className="float-animation relative">
+              <Image
+                src="/images/capa-livro-upscaled.png"
+                alt="Devocional Pequenos Corações - Capa do livro"
+                width={1066}
+                height={1600}
+                sizes="(max-width: 640px) 280px, (max-width: 768px) 390px, (max-width: 1024px) 470px, 560px"
+                priority
+                quality={100}
+                className="relative h-auto w-full drop-shadow-[0_20px_50px_rgba(249,184,78,0.5)]"
+              />
             </div>
           </div>
         </motion.div>

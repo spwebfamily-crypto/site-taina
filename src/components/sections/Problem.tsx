@@ -14,18 +14,18 @@ export function ProblemSection() {
       {/* Rainbow top border */}
       <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-pink via-gold via-green to-sky" />
 
-      <div className="relative z-10 mx-auto max-w-4xl">
+      <div className="relative z-10 mx-auto max-w-4xl px-4">
         <FadeInUp className="text-center">
-          <motion-span className="text-5xl inline-block">🙏</motion-span>
-          <h2 id="problem-heading" className="mt-4 text-3xl font-extrabold leading-snug md:text-4xl">
+          <span className="text-4xl md:text-5xl inline-block">🙏</span>
+          <h2 id="problem-heading" className="mt-3 text-2xl font-extrabold leading-snug md:text-3xl lg:text-4xl">
             Você já se perguntou...
           </h2>
-          <p className="mt-3 text-lg text-foreground/55 max-w-xl mx-auto">
+          <p className="mt-2 text-base md:text-lg text-foreground/55 max-w-xl mx-auto">
             Muitos pais sentem o mesmo. Você não está sozinho!
           </p>
         </FadeInUp>
 
-        <StaggerContainer className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-3">
+        <StaggerContainer className="mt-8 md:mt-10 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
           {painPoints.map((p) => (
             <StaggerItem key={p.text}>
               <div className={`shine-card flex flex-col items-center gap-4 rounded-3xl bg-gradient-to-b ${p.color} border-2 p-7 text-center shadow-md h-full transition-all hover:-translate-y-1 hover:shadow-xl`}>

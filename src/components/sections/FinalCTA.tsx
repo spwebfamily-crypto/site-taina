@@ -68,36 +68,36 @@ export function FinalCTASection() {
           </h2>
         </FadeInUp>
 
-        {/* Price card */}
+        {/* Price card - MOBILE OPTIMIZED */}
         <FadeInUp delay={0.25}>
-          <div className="mt-8 relative overflow-hidden rounded-[28px] p-[3px]"
+          <div className="mt-6 md:mt-8 relative overflow-hidden rounded-[24px] md:rounded-[28px] p-[3px]"
             style={{ background: "linear-gradient(135deg, #FFD93D, #FF8C42, #E8734A, #FFD93D)" }}
           >
-            <div className="shine-card rounded-[26px] bg-white p-8">
-              <p className="text-base text-foreground/60">
+            <div className="shine-card rounded-[22px] md:rounded-[26px] bg-white p-6 md:p-8">
+              <p className="text-sm md:text-base text-foreground/60">
                 Acesso imediato ao <strong className="text-foreground">Devocional Pequenos Corações</strong>
               </p>
-              <div className="mt-3 flex items-baseline justify-center gap-2">
-                <span className="text-lg text-foreground/40 line-through">R$ 49,90</span>
-                <span className="text-base text-foreground/50">por apenas</span>
+              <div className="mt-2 md:mt-3 flex items-baseline justify-center gap-2">
+                <span className="text-base md:text-lg text-foreground/40 line-through">R$ 49,90</span>
+                <span className="text-sm md:text-base text-foreground/50">por apenas</span>
               </div>
               <div className="flex items-baseline justify-center gap-1 mt-1">
-                <span className="text-2xl font-bold text-foreground/50">R$</span>
+                <span className="text-xl md:text-2xl font-bold text-foreground/50">R$</span>
                 <motion.span
-                  className="text-8xl font-black text-coral leading-none drop-shadow-[0_4px_16px_rgba(232,115,74,0.35)]"
+                  className="text-7xl md:text-8xl font-black text-coral leading-none drop-shadow-[0_4px_16px_rgba(232,115,74,0.35)]"
                   animate={{ scale: [1, 1.04, 1] }}
                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                 >
                   14,90
                 </motion.span>
               </div>
-              <p className="mt-2 text-sm font-extrabold text-green">🎉 Economize R$ 35,00 hoje!</p>
+              <p className="mt-2 text-xs md:text-sm font-extrabold text-green">🎉 Economize R$ 35,00 hoje!</p>
             </div>
           </div>
         </FadeInUp>
 
-        <FadeInUp delay={0.35} className="mt-8 flex flex-col items-center gap-4">
-          <CTAButton className="text-xl px-14 py-6" />
+        <FadeInUp delay={0.35} className="mt-6 md:mt-8 flex flex-col items-center gap-3 md:gap-4">
+          <CTAButton className="text-lg md:text-xl px-10 md:px-14 py-5 md:py-6 w-full md:w-auto" />
           <p className="text-sm text-foreground/45 flex flex-wrap justify-center gap-3">
             <span>🔒 Pagamento seguro</span>
             <span>•</span>

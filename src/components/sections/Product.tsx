@@ -56,32 +56,32 @@ export function ProductSection() {
             </div>
           </FadeInUp>
 
-          {/* Price box */}
+        {/* Price box - BIGGER ON MOBILE */}
           <FadeInUp delay={0.2} className="w-full">
             <div className="relative overflow-hidden rounded-[24px] p-[3px]"
               style={{ background: "linear-gradient(135deg, #FFD93D, #FF8C42, #E8734A)" }}
             >
-              <div className="shine-card rounded-[22px] bg-white p-6 text-center md:text-left">
-                <p className="text-sm font-semibold text-foreground/40 line-through">De R$ 49,90</p>
+              <div className="shine-card rounded-[22px] bg-white p-5 md:p-6 text-center md:text-left">
+                <p className="text-xs md:text-sm font-semibold text-foreground/40 line-through">De R$ 49,90</p>
                 <div className="flex items-baseline gap-1 mt-1 justify-center md:justify-start">
-                  <span className="text-xl font-bold text-foreground/50">R$</span>
+                  <span className="text-lg md:text-xl font-bold text-foreground/50">R$</span>
                   <motion.span
-                    className="text-7xl font-black text-coral leading-none"
+                    className="text-6xl md:text-7xl font-black text-coral leading-none"
                     animate={{ scale: [1, 1.05, 1] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                   >
                     14,90
                   </motion.span>
                 </div>
-                <p className="mt-2 text-sm font-extrabold text-green">🎉 Você economiza R$ 35,00 hoje!</p>
-                <p className="mt-1 text-xs text-foreground/40">Pagamento único • Acesso imediato</p>
+                <p className="mt-2 text-xs md:text-sm font-extrabold text-green">🎉 Você economiza R$ 35,00 hoje!</p>
+                <p className="mt-1 text-[0.65rem] md:text-xs text-foreground/40">Pagamento único • Acesso imediato</p>
               </div>
             </div>
           </FadeInUp>
 
           <FadeInUp delay={0.3} className="w-full flex flex-col items-center md:items-start gap-3">
-            <CTAButton />
-            <p className="text-xs text-foreground/40 flex items-center gap-2">
+            <CTAButton className="w-full md:w-auto" />
+            <p className="text-[0.65rem] md:text-xs text-foreground/40 flex flex-wrap items-center justify-center gap-2">
               <span>🔒 Compra 100% segura</span>
               <span>•</span>
               <span>🛡️ Garantia de 7 dias</span>

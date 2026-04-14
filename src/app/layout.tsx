@@ -30,9 +30,9 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     images: [
       {
-        url: "/images/capa-livro.png",
-        width: 600,
-        height: 600,
+        url: "/images/capa-livro-upscaled.png",
+        width: 1066,
+        height: 1600,
         alt: "Devocional Pequenos Corações - Capa",
       },
     ],
