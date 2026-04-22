@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { FadeInUp } from "../AnimatedSection";
 import { CTAButton } from "../CTAButton";
+import { useRegionalOffer } from "@/hooks/useRegionalOffer";
 
 const confetti = [
   { left: "5%",  top: "10%", color: "#FFD93D", size: 14, delay: 0 },
@@ -15,6 +16,8 @@ const confetti = [
 ];
 
 export function FinalCTASection() {
+  const offer = useRegionalOffer();
+
   return (
     <section className="relative overflow-hidden px-6 py-20 md:px-12 md:py-28" aria-labelledby="final-cta-heading">
 
@@ -78,20 +81,24 @@ export function FinalCTASection() {
                 Acesso imediato ao <strong className="text-foreground">Devocional Pequenos Corações</strong>
               </p>
               <div className="mt-2 md:mt-3 flex items-baseline justify-center gap-2">
-                <span className="text-base md:text-lg text-foreground/40 line-through">R$ 49,90</span>
+                <span className="text-base md:text-lg text-foreground/40 line-through">
+                  {offer.compareAtFormatted}
+                </span>
                 <span className="text-sm md:text-base text-foreground/50">por apenas</span>
               </div>
               <div className="flex items-baseline justify-center gap-1 mt-1">
-                <span className="text-xl md:text-2xl font-bold text-foreground/50">R$</span>
+                <span className="text-xl md:text-2xl font-bold text-foreground/50">{offer.currencySymbol}</span>
                 <motion.span
                   className="text-7xl md:text-8xl font-black text-coral leading-none drop-shadow-[0_4px_16px_rgba(232,115,74,0.35)]"
                   animate={{ scale: [1, 1.04, 1] }}
                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  14,90
+                  {offer.priceAmount}
                 </motion.span>
               </div>
-              <p className="mt-2 text-xs md:text-sm font-extrabold text-green">🎉 Economize R$ 35,00 hoje!</p>
+              <p className="mt-2 text-xs md:text-sm font-extrabold text-green">
+                🎉 Economize {offer.savingsFormatted} hoje!
+              </p>
             </div>
           </div>
         </FadeInUp>
@@ -114,9 +121,9 @@ export function FinalCTASection() {
           >
             <div className="rounded-[14px] bg-white/90 backdrop-blur-sm p-6">
               <p className="text-foreground/70 italic text-base font-semibold">
-                "Deixai as crianças virem a mim, e não as impeçais;
+                &quot;Deixai as crianças virem a mim, e não as impeçais;
                 <br />
-                porque o reino de Deus é para os que se assemelham a elas."
+                porque o reino de Deus é para os que se assemelham a elas.&quot;
               </p>
               <p className="mt-2 text-sm font-extrabold text-[#B8860B]">— Marcos 10:14</p>
             </div>

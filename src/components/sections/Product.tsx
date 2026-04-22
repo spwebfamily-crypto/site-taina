@@ -4,8 +4,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { FadeInUp, ScaleIn } from "../AnimatedSection";
 import { CTAButton } from "../CTAButton";
+import { useRegionalOffer } from "@/hooks/useRegionalOffer";
 
 export function ProductSection() {
+  const offer = useRegionalOffer();
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-[#FFFBF5] to-[#FFF0E0] px-6 py-16 md:px-12 md:py-24" aria-labelledby="product-heading">
       {/* Rainbow top border */}
@@ -62,18 +65,22 @@ export function ProductSection() {
               style={{ background: "linear-gradient(135deg, #FFD93D, #FF8C42, #E8734A)" }}
             >
               <div className="shine-card rounded-[22px] bg-white p-5 md:p-6 text-center md:text-left">
-                <p className="text-xs md:text-sm font-semibold text-foreground/40 line-through">De R$ 49,90</p>
+                <p className="text-xs md:text-sm font-semibold text-foreground/40 line-through">
+                  De {offer.compareAtFormatted}
+                </p>
                 <div className="flex items-baseline gap-1 mt-1 justify-center md:justify-start">
-                  <span className="text-lg md:text-xl font-bold text-foreground/50">R$</span>
+                  <span className="text-lg md:text-xl font-bold text-foreground/50">{offer.currencySymbol}</span>
                   <motion.span
                     className="text-6xl md:text-7xl font-black text-coral leading-none"
                     animate={{ scale: [1, 1.05, 1] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                   >
-                    14,90
+                    {offer.priceAmount}
                   </motion.span>
                 </div>
-                <p className="mt-2 text-xs md:text-sm font-extrabold text-green">🎉 Você economiza R$ 35,00 hoje!</p>
+                <p className="mt-2 text-xs md:text-sm font-extrabold text-green">
+                  🎉 Você economiza {offer.savingsFormatted} hoje!
+                </p>
                 <p className="mt-1 text-[0.65rem] md:text-xs text-foreground/40">Pagamento único • Acesso imediato</p>
               </div>
             </div>

@@ -47,9 +47,9 @@ export function ProblemSection() {
               />
               <span className="relative text-4xl">✦</span>
               <p className="relative mt-4 text-xl font-bold italic leading-relaxed md:text-2xl">
-                "Instrua a criança no caminho em que deve andar,
+                &quot;Instrua a criança no caminho em que deve andar,
                 <br />
-                <span className="text-yellow">e quando envelhecer, não se desviará dele."</span>
+                <span className="text-yellow">e quando envelhecer, não se desviará dele.&quot;</span>
               </p>
               <p className="relative mt-3 text-sm font-bold text-white/50 uppercase tracking-widest">— Provérbios 22:6</p>
             </div>
