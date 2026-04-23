@@ -30,9 +30,9 @@ const BRAZIL_PRICE = {
 };
 
 const INTERNATIONAL_PRICE_EUR = {
-  compareAt: 9.9,
+  compareAt: 19.9,
   currency: "EUR",
-  price: 2.9,
+  price: 6.9,
 };
 
 const COUNTRY_TO_CURRENCY: Record<string, string> = {
