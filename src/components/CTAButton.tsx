@@ -26,7 +26,7 @@ export function CTAButton({ className = "" }: { className?: string }) {
       onClick={handleClick}
       whileHover={{ scale: 1.03, y: -2 }}
       whileTap={{ scale: 0.98 }}
-      className={`cta-pulse cta-shimmer relative inline-flex items-center justify-center gap-2.5 rounded-full border border-white/75 px-9 py-4 text-base font-black tracking-[0.05em] text-white shadow-[0_18px_38px_rgba(195,129,104,0.24)] backdrop-blur-sm transition-transform focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/60 md:px-10 md:py-5 md:text-lg ${className}`}
+      className={`cta-pulse cta-shimmer relative inline-flex items-center justify-center gap-2.5 rounded-full border border-white/75 px-5 py-4 text-center text-sm font-black tracking-[0.02em] text-white shadow-[0_18px_38px_rgba(195,129,104,0.24)] backdrop-blur-sm transition-transform focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/60 sm:px-7 sm:text-base md:px-10 md:py-5 md:text-lg ${className}`}
       aria-label={ariaLabel}
     >
       {buttonLabel}

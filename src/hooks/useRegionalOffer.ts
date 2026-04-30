@@ -25,11 +25,11 @@ function getBrowserLocale() {
 function getBrowserCountry(locale: string, timeZone: string | null) {
   const timeZoneCountry = getCountryFromTimeZone(timeZone);
 
-  if (timeZoneCountry === "BR") {
+  if (timeZoneCountry) {
     return timeZoneCountry;
   }
 
-  return getCountryFromLocale(locale) ?? timeZoneCountry;
+  return getCountryFromLocale(locale);
 }
 
 export function getBrowserRegionalOffer() {

@@ -3,65 +3,50 @@
 import { FadeInUp, StaggerContainer, StaggerItem } from "../AnimatedSection";
 
 const painPoints = [
-  { emoji: "😔", text: "\"Quero ensinar meu filho sobre Deus, mas não sei por onde começar\"", color: "from-pink-light to-white border-pink/20" },
-  { emoji: "⏰", text: "\"A rotina é corrida e o tempo para momentos espirituais é curto\"",   color: "from-sky-light to-white border-sky/30" },
-  { emoji: "🤔", text: "\"Como explicar a Bíblia de um jeito que uma criança entenda?\"",      color: "from-yellow/30 to-white border-gold/30" },
+  "Quero ensinar sobre Deus, mas não sei por onde começar.",
+  "A rotina é corrida e o momento espiritual acaba ficando para depois.",
+  "Preciso explicar a Bíblia de um jeito simples para uma criança pequena.",
 ];
 
 export function ProblemSection() {
   return (
-    <section className="relative overflow-hidden bg-white px-6 py-16 md:px-12 md:py-24" aria-labelledby="problem-heading">
-      {/* Rainbow top border */}
-      <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-pink via-gold via-green to-sky" />
+    <section
+      className="relative overflow-hidden bg-background px-4 py-14 sm:px-6 md:px-12 md:py-24"
+      aria-labelledby="problem-heading"
+    >
+      <div className="absolute inset-x-0 top-0 h-px bg-foreground/10" />
 
-      <div className="relative z-10 mx-auto max-w-4xl px-4">
-        <FadeInUp className="text-center">
-          <span className="text-4xl md:text-5xl inline-block">🙏</span>
-          <h2 id="problem-heading" className="mt-3 text-2xl font-extrabold leading-snug md:text-3xl lg:text-4xl">
-            Você já se perguntou...
+      <div className="relative z-10 mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+        <FadeInUp>
+          <p className="text-sm font-black uppercase tracking-[0.14em] text-coral">
+            Para a rotina real
+          </p>
+          <h2
+            id="problem-heading"
+            className="mt-3 text-[2rem] font-black leading-tight text-foreground md:text-5xl"
+          >
+            Um jeito simples de abrir a Bíblia com as crianças.
           </h2>
-          <p className="mt-2 text-base md:text-lg text-foreground/55 max-w-xl mx-auto">
-            Muitos pais sentem o mesmo. Você não está sozinho!
+          <p className="mt-4 text-base leading-relaxed text-foreground/60 md:text-lg">
+            O material foi pensado para caber em poucos minutos do dia, sem
+            preparação longa e sem linguagem difícil.
           </p>
         </FadeInUp>
 
-        <StaggerContainer className="mt-8 md:mt-10 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
-          {painPoints.map((p) => (
-            <StaggerItem key={p.text}>
-              <div className={`shine-card flex flex-col items-center gap-4 rounded-3xl bg-gradient-to-b ${p.color} border-2 p-7 text-center shadow-md h-full transition-all hover:-translate-y-1 hover:shadow-xl`}>
-                <span className="text-5xl">{p.emoji}</span>
-                <p className="text-base font-semibold text-foreground/70 italic leading-relaxed">{p.text}</p>
+        <StaggerContainer className="grid gap-3">
+          {painPoints.map((text, index) => (
+            <StaggerItem key={text}>
+              <div className="grid grid-cols-[auto_1fr] items-start gap-3 rounded-[16px] border border-foreground/10 bg-white px-4 py-4 shadow-sm md:gap-4 md:rounded-[18px] md:px-5">
+                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#F7E7C6] text-sm font-black text-[#8D6230] md:h-9 md:w-9">
+                  {index + 1}
+                </span>
+                <p className="text-sm font-bold leading-relaxed text-foreground/70 md:text-base">
+                  {text}
+                </p>
               </div>
             </StaggerItem>
           ))}
         </StaggerContainer>
-
-        {/* Bible verse card */}
-        <FadeInUp delay={0.3} className="mt-12">
-          <div className="relative overflow-hidden rounded-3xl p-[3px]"
-            style={{ background: "linear-gradient(135deg, #FFD93D, #FF6B6B, #FFAA00, #FF8C42, #FFE566)" }}
-          >
-            <div className="relative rounded-[22px] bg-gradient-to-br from-[#7a4a00] to-[#5a3000] p-8 text-center text-white">
-              <div className="absolute inset-0 opacity-10 rounded-[22px]"
-                style={{ backgroundImage: "radial-gradient(circle at 20% 50%, #F9B84E 0%, transparent 50%), radial-gradient(circle at 80% 50%, #F4A4B8 0%, transparent 50%)" }}
-              />
-              <span className="relative text-4xl">✦</span>
-              <p className="relative mt-4 text-xl font-bold italic leading-relaxed md:text-2xl">
-                &quot;Instrua a criança no caminho em que deve andar,
-                <br />
-                <span className="text-yellow">e quando envelhecer, não se desviará dele.&quot;</span>
-              </p>
-              <p className="relative mt-3 text-sm font-bold text-white/50 uppercase tracking-widest">— Provérbios 22:6</p>
-            </div>
-          </div>
-        </FadeInUp>
-
-        <FadeInUp delay={0.4} className="mt-10 text-center">
-          <p className="text-xl leading-relaxed text-foreground/70 max-w-2xl mx-auto">
-            O <strong className="text-coral">Devocional Pequenos Corações</strong> foi criado exatamente para isso —
-            tornar o ensino bíblico <strong className="text-foreground">simples, divertido e constante</strong> mesmo na correria! 🎉
-          </p>
-        </FadeInUp>
       </div>
     </section>
   );

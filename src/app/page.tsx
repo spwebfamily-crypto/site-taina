@@ -1,6 +1,5 @@
 import { HeroSection } from "@/components/sections/Hero";
 import { ProblemSection } from "@/components/sections/Problem";
-import { AudienceSection } from "@/components/sections/Audience";
 import { ContentSection } from "@/components/sections/Content";
 import { ProductSection } from "@/components/sections/Product";
 import { GuaranteeSection } from "@/components/sections/Guarantee";
@@ -12,7 +11,6 @@ export default function Home() {
     <main className="flex flex-col">
       <HeroSection />
       <ProblemSection />
-      <AudienceSection />
       <ContentSection />
       <ProductSection />
       <GuaranteeSection />
