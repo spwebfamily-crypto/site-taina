@@ -25,30 +25,35 @@ export function HeartSVG({ className = "" }: { className?: string }) {
 }
 
 export function DotsDivider() {
-  return <div className="dots-divider mx-auto w-full max-w-md" role="separator" />;
+  return (
+    <div className="dots-divider mx-auto w-full max-w-md" role="separator" />
+  );
 }
 
 export function FloatingShapes() {
   return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div
+      className="pointer-events-none absolute inset-0 overflow-hidden"
+      aria-hidden="true"
+    >
       {/* Top left circle */}
-      <div className="absolute -left-16 -top-16 h-64 w-64 rounded-full bg-pink/10" />
+      <div className="absolute -left-20 -top-20 h-80 w-80 rounded-full bg-[#F4C7D5]/10 blur-3xl" />
       {/* Top right star cluster */}
-      <div className="absolute right-12 top-20 h-6 w-6 text-gold/30">
+      <div className="absolute right-12 top-20 h-6 w-6 text-[#E8C89A]/30">
         <StarSVG />
       </div>
-      <div className="absolute right-28 top-12 h-4 w-4 text-coral/20">
+      <div className="absolute right-28 top-12 h-4 w-4 text-[#D87E72]/15">
         <StarSVG />
       </div>
-      <div className="absolute right-8 top-40 h-3 w-3 text-green/25">
+      <div className="absolute right-8 top-40 h-3 w-3 text-[#87B985]/20">
         <StarSVG />
       </div>
       {/* Bottom decorations */}
-      <div className="absolute -bottom-20 -right-20 h-80 w-80 rounded-full bg-gold/8" />
-      <div className="absolute bottom-32 left-8 h-5 w-5 text-pink/25">
+      <div className="absolute -bottom-32 -right-20 h-96 w-96 rounded-full bg-[#E8C89A]/5 blur-3xl" />
+      <div className="absolute bottom-32 left-8 h-5 w-5 text-[#F4C7D5]/20">
         <HeartSVG />
       </div>
-      <div className="absolute bottom-16 left-24 h-3 w-3 text-coral/20">
+      <div className="absolute bottom-16 left-24 h-3 w-3 text-[#D87E72]/15">
         <StarSVG />
       </div>
     </div>

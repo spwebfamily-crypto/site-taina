@@ -3,7 +3,7 @@ export const HOTMART_BRAZIL_CHECKOUT_URL =
 export const HOTMART_INTERNATIONAL_CHECKOUT_URL =
   "https://pay.hotmart.com/P105501171G?off=ww9yq17z&checkoutMode=10&bid=1777577423390";
 
-type Market = "brazil" | "international";
+export type Market = "brazil" | "uk" | "us" | "international";
 
 export type RegionalOffer = {
   checkoutUrl: string;
@@ -24,16 +24,39 @@ type RegionalOfferInput = {
   timeZone?: string | null;
 };
 
-const BRAZIL_PRICE = {
-  compareAt: 49.9,
-  currency: "BRL",
-  price: 14.9,
-};
-
-const INTERNATIONAL_PRICE_EUR = {
-  compareAt: 19.9,
-  currency: "EUR",
-  price: 6.9,
+const OFFERS: Record<
+  Market,
+  {
+    compareAt: number;
+    currency: string;
+    locale: string;
+    price: number;
+  }
+> = {
+  brazil: {
+    compareAt: 49.9,
+    currency: "BRL",
+    locale: "pt-BR",
+    price: 14.9,
+  },
+  uk: {
+    compareAt: 16.9,
+    currency: "GBP",
+    locale: "en-GB",
+    price: 5.9,
+  },
+  us: {
+    compareAt: 19.9,
+    currency: "USD",
+    locale: "en-US",
+    price: 7.9,
+  },
+  international: {
+    compareAt: 19.9,
+    currency: "EUR",
+    locale: "pt-PT",
+    price: 6.9,
+  },
 };
 
 const TIME_ZONE_TO_COUNTRY: Record<string, string> = {
@@ -78,6 +101,10 @@ const TIME_ZONE_TO_COUNTRY: Record<string, string> = {
   "Europe/Zurich": "CH",
 };
 
+const DISPLAY_CURRENCY_SYMBOLS: Record<string, string> = {
+  USD: "US$",
+};
+
 function normalizeCountry(country?: string | null) {
   const normalized = country?.trim().toUpperCase();
   return normalized && /^[A-Z]{2}$/.test(normalized) ? normalized : null;
@@ -111,7 +138,9 @@ function getNumberParts(amount: number, currency: string, locale: string) {
   });
   const parts = formatter.formatToParts(amount);
   const currencySymbol =
-    parts.find((part) => part.type === "currency")?.value ?? currency;
+    DISPLAY_CURRENCY_SYMBOLS[currency] ??
+    parts.find((part) => part.type === "currency")?.value ??
+    currency;
   const number = parts
     .filter((part) => part.type !== "currency")
     .map((part) => part.value)
@@ -120,9 +149,25 @@ function getNumberParts(amount: number, currency: string, locale: string) {
 
   return {
     currencySymbol,
-    formatted: formatter.format(amount),
+    formatted: `${currencySymbol}${number}`,
     number,
   };
+}
+
+function getMarket(country: string | null): Market {
+  if (country === "BR") {
+    return "brazil";
+  }
+
+  if (country === "GB") {
+    return "uk";
+  }
+
+  if (country === "US") {
+    return "us";
+  }
+
+  return "international";
 }
 
 export function getRegionalOffer({
@@ -134,18 +179,18 @@ export function getRegionalOffer({
     normalizeCountry(country) ??
     getCountryFromTimeZone(timeZone) ??
     getCountryFromLocale(locale);
-  const isBrazil = normalizedCountry === "BR";
-  const safeLocale = isBrazil ? "pt-BR" : "pt-PT";
-  const currency = isBrazil ? BRAZIL_PRICE.currency : INTERNATIONAL_PRICE_EUR.currency;
-  const price = isBrazil ? BRAZIL_PRICE.price : INTERNATIONAL_PRICE_EUR.price;
-  const compareAt = isBrazil ? BRAZIL_PRICE.compareAt : INTERNATIONAL_PRICE_EUR.compareAt;
+  const market = getMarket(normalizedCountry);
+  const offer = OFFERS[market];
+  const currency = offer.currency;
+  const price = offer.price;
+  const compareAt = offer.compareAt;
   const savings = Math.max(compareAt - price, 0);
-  const priceParts = getNumberParts(price, currency, safeLocale);
-  const compareAtParts = getNumberParts(compareAt, currency, safeLocale);
-  const savingsParts = getNumberParts(savings, currency, safeLocale);
+  const priceParts = getNumberParts(price, currency, offer.locale);
+  const compareAtParts = getNumberParts(compareAt, currency, offer.locale);
+  const savingsParts = getNumberParts(savings, currency, offer.locale);
 
   return {
-    checkoutUrl: isBrazil
+    checkoutUrl: market === "brazil"
       ? HOTMART_BRAZIL_CHECKOUT_URL
       : HOTMART_INTERNATIONAL_CHECKOUT_URL,
     compareAtAmount: compareAtParts.number,
@@ -153,7 +198,7 @@ export function getRegionalOffer({
     country: normalizedCountry,
     currency,
     currencySymbol: priceParts.currencySymbol,
-    market: isBrazil ? "brazil" : "international",
+    market,
     priceAmount: priceParts.number,
     priceFormatted: priceParts.formatted,
     savingsFormatted: savingsParts.formatted,
